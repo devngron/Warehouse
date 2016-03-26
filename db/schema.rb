@@ -11,20 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301203523) do
+ActiveRecord::Schema.define(version: 20160326163001) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.decimal  "price"
+>>>>>>> feature/product_scaffold
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "warehouses", force: :cascade do |t|
-    t.string   "product"
+    t.integer  "product_id"
+    t.decimal  "price"
     t.integer  "qnty"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "supplier_id"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
