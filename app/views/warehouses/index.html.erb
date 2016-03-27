@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Warehouses</h1>
-
+<%= link_to "Product", products_path %>
 <table>
   <thead>
     <tr>
       <th>Product</th>
       <th>Price</th>
       <th>Qnty</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +16,10 @@
   <tbody>
     <% @warehouses.each do |warehouse| %>
       <tr>
-        <td><%= warehouse.product %></td>
+        <td><%= @products.find(warehouse.product_id).name %></td>
         <td><%= warehouse.price %></td>
         <td><%= warehouse.qnty %></td>
+        <td><%= warehouse.description %></td>
         <td><%= link_to 'Show', warehouse %></td>
         <td><%= link_to 'Edit', edit_warehouse_path(warehouse) %></td>
         <td><%= link_to 'Destroy', warehouse, method: :delete, data: { confirm: 'Are you sure?' } %></td>

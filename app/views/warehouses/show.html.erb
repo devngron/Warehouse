@@ -2,7 +2,7 @@
 
 <p>
   <strong>Product:</strong>
-  <%= @warehouse.product %>
+  <%= @product.name %>
 </p>
 
 <p>
@@ -13,6 +13,11 @@
 <p>
   <strong>Qnty:</strong>
   <%= @warehouse.qnty %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @warehouse.description %>
 </p>
 
 <%= link_to 'Edit', edit_warehouse_path(@warehouse) %> |

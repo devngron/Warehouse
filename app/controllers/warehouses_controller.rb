@@ -1,15 +1,17 @@
 class WarehousesController < ApplicationController
   before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show]
 
   # GET /warehouses
   # GET /warehouses.json
   def index
     @warehouses = Warehouse.all
+    @products = Product.all    
   end
 
   # GET /warehouses/1
   # GET /warehouses/1.json
-  def show
+  def show    
   end
 
   # GET /warehouses/new
@@ -67,8 +69,12 @@ class WarehousesController < ApplicationController
       @warehouse = Warehouse.find(params[:id])
     end
 
+    def set_product      
+      @product = Product.find(Warehouse.find(params[:id]).product_id)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def warehouse_params
-      params.require(:warehouse).permit(:product, :price, :qnty)
+      params.require(:warehouse).permit(:product_id, :price, :qnty, :description)
     end
 end

@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :product_id %><br>
-    <%= f.text_field :product_id %>
+    <%= collection_select( :warehouse, :product_id, Product.all, :id, :name, {}, {:onchange => "alert('Hello World');"} )%>
+    
   </div>
   <div class="field">
     <%= f.label :price %><br>
@@ -22,6 +23,10 @@
   <div class="field">
     <%= f.label :qnty %><br>
     <%= f.number_field :qnty %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </div>
   <div class="actions">
     <%= f.submit %>
