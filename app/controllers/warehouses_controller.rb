@@ -1,17 +1,16 @@
 class WarehousesController < ApplicationController
   before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
-  before_action :set_product, only: [:show]
+  before_action :get_products, only: [:new, :edit]
 
   # GET /warehouses
   # GET /warehouses.json
   def index
     @warehouses = Warehouse.all
-    @products = Product.all    
   end
 
   # GET /warehouses/1
   # GET /warehouses/1.json
-  def show    
+  def show
   end
 
   # GET /warehouses/new
@@ -72,24 +71,24 @@ class WarehousesController < ApplicationController
       @warehouse = Warehouse.find(params[:id])
     end
 
-    def set_product      
-      @product = Product.find(Warehouse.find(params[:id]).product_id)
+    def get_products
+      @products = Product.all
     end
 
-    def get_price      
+    def get_price
       @price = Product.find(params[:product_id]).name
-=begin       
+=begin
       respond_to do |format|
         format.html
         format.json { render :json => @price }
       end
-=end       
+=end
         if request.xhr?
           render :json => {
                               :default_price => @price
                           }
         end
-      
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
