@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :product_id %><br>
-    <%= collection_select( :warehouse, :product_id, Product.all, :id, :name, {}, {:onchange => "alert('Hello World');"} )%>
+    <%= f.label :product_id %><br>    
+    <%= select_tag "product_selection", options_from_collection_for_select(Product.all, "id", "name") %>
     
-  </div>
+  </div>  
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.text_field :price, :id => "default_price" %>
   </div>
   <div class="field">
     <%= f.label :qnty %><br>
@@ -32,3 +32,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+

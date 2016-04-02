@@ -17,6 +17,9 @@ class WarehousesController < ApplicationController
   # GET /warehouses/new
   def new
     @warehouse = Warehouse.new
+
+    #When on change event is trigered; call method...
+    #set_price(params[:id])
   end
 
   # GET /warehouses/1/edit
@@ -71,6 +74,22 @@ class WarehousesController < ApplicationController
 
     def set_product      
       @product = Product.find(Warehouse.find(params[:id]).product_id)
+    end
+
+    def get_price      
+      @price = Product.find(params[:product_id]).name
+=begin       
+      respond_to do |format|
+        format.html
+        format.json { render :json => @price }
+      end
+=end       
+        if request.xhr?
+          render :json => {
+                              :default_price => @price
+                          }
+        end
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

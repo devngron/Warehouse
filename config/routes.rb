@@ -1,7 +1,22 @@
 Rails.application.routes.draw do
-  root      'warehouses#index'
+  root 'warehouses#index'
+  
+  get 'warehouses/get_price', to: 'warehouses#get_price'
+  
   resources :products
   resources :warehouses
+
+=begin
+  resources :warehouses do
+    collection do
+      get 'get_price'
+    end
+  end
+=end
+  #get 'get_price_warehouse_path' to: :get_price
+  #get '/get_price/:id', to: 'warehouses#get_price'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
