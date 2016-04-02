@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Product:</strong>
-  <%= @product.name %>
-</p>
+<%= @warehouse.products.all.each do |p| %>
+  <p>
+    <strong>Product:</strong>
+    <%= p.name %>
+  </p>
+<% end %>
 
 <p>
   <strong>Price:</strong>

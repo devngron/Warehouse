@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :product_id %><br>    
-    <%= select_tag "product_selection", options_from_collection_for_select(Product.all, "id", "name") %>
-    
-  </div>  
+    <%= f.label :product_id %><br>
+    <%= select_tag "product_selection", options_from_collection_for_select(@products, "id", "name") %>
+
+  </div>
   <div class="field">
     <%= f.label :price %><br>
     <%= f.text_field :price, :id => "default_price" %>
@@ -32,4 +32,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
